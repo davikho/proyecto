@@ -3,7 +3,7 @@
     <aside class="sidebar bg-dark text-white p-4" style="width: 250px; height: 100vh;">
       <!-- Logo -->
       <div class="d-flex justify-content-center mb-4">
-        <img src="assets/logo.png" alt="Logo" style="max-width: 100px;">
+        <img src="logo2.png" alt="Logo" style="max-width: 100px;">
       </div>
       <ul class="nav flex-column">
         <li class="nav-item mb-3">
@@ -25,6 +25,12 @@
           <a class="nav-link text-white" routerLink="configuraciones" routerLinkActive="active">
             <i class="bi bi-gear-fill"></i> Configuraciones
           </a>
+        </li>
+        <!-- Botón de logout -->
+        <li class="nav-item mb-3">
+          <button class="btn btn-danger w-100" (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i> Salir
+          </button>
         </li>
       </ul>
     </aside>

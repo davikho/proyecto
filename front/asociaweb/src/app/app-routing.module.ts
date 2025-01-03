@@ -8,15 +8,18 @@ import { CrearSocioComponent } from './componentes/crear-socio/crear-socio.compo
 import { VerSociosComponent } from './componentes/ver-socios/ver-socios.component';
 import { ConfiguracionesComponent } from './componentes/configuraciones/configuraciones.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'registro', component:RegistroComponent},
-  {path:'login', component: LoginComponent},
+  {path: '', component: HomeComponent},
+  {path: 'registro', component: RegistroComponent},
+  {path: 'login', component: LoginComponent},
   {
-    path: 'admin', component: AdminComponent, children: [
-      
-      { path: 'inicio', component: InicioComponent }, // O el componente que consideres para inicio
+    path: 'admin', 
+    component: AdminComponent, 
+    canActivate: [AuthGuard],  // Agrega el AuthGuard aquí
+    children: [
+      { path: 'inicio', component: InicioComponent },
       { path: 'crear-socio', component: CrearSocioComponent },
       { path: 'ver-socios', component: VerSociosComponent },
       { path: 'configuraciones', component: ConfiguracionesComponent }
