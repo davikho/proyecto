@@ -1,5 +1,13 @@
 # Aplicación de Gestión de Socios 📋
 
+La aplicación se encuentra desplegada como demo en un servidor de **Amazon** 🚀, y el frontend está hospedado en un **hosting comercial** 🖥️. Puedes acceder a la demo en el siguiente enlace:
+
+
+- [**Accede a la aplicación demo**](https://asociaweb.america3000.site/) 🌍
+
+PASSWORD: admin
+USUARIO: admin
+
 ## **Bondades de la Aplicación de Gestión de Socios** ✨
 
 1. **Gestión de Socios**:
@@ -88,14 +96,17 @@
 
 La aplicación se encuentra desplegada como demo en un servidor de **Amazon** 🚀, y el frontend está hospedado en un **hosting comercial** 🖥️. Puedes acceder a la demo en el siguiente enlace:
 
+
 - [**Accede a la aplicación demo**](https://asociaweb.america3000.site/) 🌍
 
+PASSWORD: admin
+USUARIO: admin
 ---
 
 ## **Detalles de Descarga y Conexión** 📥
 
 - Para ejecutar la aplicación de manera local, sigue estos pasos:
-  1. Clona el repositorio: [**Repositorio de la app**](https://github.com/tu-repositorio)
+  1. Clona el repositorio: [**Repositorio de la app**](https://github.com/davikho/proyecto.git)
   2. Instala las dependencias necesarias tanto para el backend como para el frontend.
   3. Inicia el servidor backend (Flask) y el servidor frontend (Angular).
   4. Accede a la aplicación desde tu navegador en `http://localhost:4200` o el puerto que hayas configurado.
