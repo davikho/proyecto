@@ -88,7 +88,7 @@
 
 La aplicación se encuentra desplegada como demo en un servidor de **Amazon** 🚀, y el frontend está hospedado en un **hosting comercial** 🖥️. Puedes acceder a la demo en el siguiente enlace:
 
-- [**Accede a la aplicación demo**](https://tu-app-demostracion.com) 🌍
+- [**Accede a la aplicación demo**](https://asociaweb.america3000.site/) 🌍
 
 ---
 
