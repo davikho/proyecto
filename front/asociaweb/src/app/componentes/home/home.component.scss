@@ -1,0 +1,24 @@
+/* inicio.component.css */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .container-fluid {
+    height: 76vh; /* Asegura que el contenedor ocupe todo el alto de la pantalla */
+  }
+  
+  h1 {
+    font-size: 4rem; /* Título grande */
+  }
+  
+  p {
+    font-size: 1.5rem;
+  }
+  
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+  }
+  

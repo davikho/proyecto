@@ -1,0 +1,81 @@
+<div style="height: 100vh;
+width: 100vw;
+display: flex
+;
+justify-content: flex-end; background-image: url('img/fondo.jpg'); background-position: center; background-size: cover;">
+<div class="registro-container">
+    <h1 class="registro-title">Registro de Socios</h1>
+    <form #registroForm="ngForm" (ngSubmit)="onSubmit()">
+      <!-- Campo Nombre -->
+      <div class="form-group mb-3">
+        <label for="nombre" class="form-label">Nombre completo</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="form-control"
+          minlength="20"
+          required
+          [(ngModel)]="socio.nombre"
+          placeholder="Introduce tu nombre completo" />
+        <div *ngIf="registroForm.submitted && registroForm.controls['nombre']?.invalid" class="form-text text-danger">
+          El nombre debe tener al menos 20 caracteres.
+        </div>
+      </div>
+  
+      <!-- Campo Dirección -->
+      <div class="form-group mb-3">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input
+          type="text"
+          id="direccion"
+          name="direccion"
+          class="form-control"
+          required
+          [(ngModel)]="socio.direccion"
+          placeholder="Introduce tu dirección" />
+        <div *ngIf="registroForm.submitted && registroForm.controls['direccion']?.invalid" class="form-text text-danger">
+          La dirección es obligatoria.
+        </div>
+      </div>
+  
+      <!-- Campo Correo Electrónico -->
+      <div class="form-group mb-3">
+        <label for="correo" class="form-label">Correo Electrónico</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          class="form-control"
+          required
+          [(ngModel)]="socio.correo"
+          placeholder="Introduce tu correo electrónico" />
+        <div *ngIf="registroForm.submitted && registroForm.controls['correo']?.invalid" class="form-text text-danger">
+          Debe ser un correo válido.
+        </div>
+      </div>
+  
+      <!-- Campo Teléfono -->
+      <div class="form-group mb-3">
+        <label for="telefono" class="form-label">Teléfono Móvil</label>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          class="form-control"
+          pattern="[0-9]{10}"
+          required
+          [(ngModel)]="socio.telefono"
+          placeholder="Introduce tu número de móvil" />
+        <div *ngIf="registroForm.submitted && registroForm.controls['telefono']?.invalid" class="form-text text-danger">
+          El teléfono debe contener exactamente 10 dígitos.
+        </div>
+      </div>
+  
+      <!-- Botón de Envío -->
+      <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="!registroForm.valid">
+        Registrar
+      </button>
+    </form>
+  </div></div>
+  
