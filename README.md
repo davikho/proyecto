@@ -104,11 +104,3 @@ La aplicación se encuentra desplegada como demo en un servidor de **Amazon** �
 
 ¡Gracias por usar nuestra aplicación de gestión de socios! 🎉
 """
-
-# Escribimos el contenido del archivo Markdown en un archivo
-file_path = '/mnt/data/gestion_socios_app.md'
-
-with open(file_path, 'w') as file:
-    file.write(file_content)
-
-file_path
