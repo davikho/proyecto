@@ -5,8 +5,8 @@ La aplicación se encuentra desplegada como demo en un servidor de **Amazon** �
 
 - [**Accede a la aplicación demo**](https://asociaweb.america3000.site/) 🌍
 
-PASSWORD: admin
-USUARIO: admin
+<span style="color: red;">**PASSWORD:** admin</span>  
+<span style="color: blue;">**USUARIO:** admin</span>
 
 ## **Bondades de la Aplicación de Gestión de Socios** ✨
 
