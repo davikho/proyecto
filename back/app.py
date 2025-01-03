@@ -34,6 +34,7 @@ with app.app_context():
 def index():
     return 'Bienvenido a la API de la Asociación'
 
+
 # Ruta para consultar todos los socios
 @app.route('/socios/listar', methods=['GET'])
 def listar_socios():
@@ -47,8 +48,25 @@ def listar_socios():
         'aprobado': socio.aprobado,
         'monto_pagado': socio.monto_pagado,
         'monto_estimado': socio.monto_estimado,
+        'diferencia': socio.monto_estimado - socio.monto_pagado,  # Calcular la diferencia
         'estado': socio.estado
     } for socio in socios])
+
+
+# Ruta para obtener las estadísticas de los socios
+@app.route('/socios/estadisticas', methods=['GET'])
+def obtener_estadisticas():
+    total_socios = Socio.query.count()
+    total_estimado = db.session.query(db.func.sum(Socio.monto_estimado)).scalar() or 0
+    total_pagado = db.session.query(db.func.sum(Socio.monto_pagado)).scalar() or 0
+    diferencia_total = total_estimado - total_pagado
+
+    return jsonify({
+        'totalSocios': total_socios,
+        'totalEstimado': total_estimado,
+        'totalPagado': total_pagado,
+        'diferenciaTotal': diferencia_total
+    })
 
 # Ruta para consultar un socio específico por ID
 @app.route('/socios/consultar/<int:id>', methods=['GET'])
@@ -65,6 +83,7 @@ def consultar_socio(id):
         'aprobado': socio.aprobado,
         'monto_pagado': socio.monto_pagado,
         'monto_estimado': socio.monto_estimado,
+        'diferencia': socio.monto_estimado - socio.monto_pagado,  # Calcular la diferencia
         'estado': socio.estado
     })
 
@@ -89,7 +108,6 @@ def crear_socio():
 
     return jsonify({'mensaje': 'Socio registrado exitosamente'}), 201
 
-
 # Ruta para eliminar un socio
 @app.route('/socios/eliminar/<int:id>', methods=['DELETE'])
 def eliminar_socio(id):
@@ -101,6 +119,46 @@ def eliminar_socio(id):
     db.session.commit()
 
     return jsonify({'mensaje': 'Socio eliminado exitosamente'})
+
+@app.route('/socios/actualizar/<int:id>', methods=['PUT'])
+def actualizar_socio(id):
+    # Obtener el socio desde la base de datos
+    socio = Socio.query.get(id)
+    if not socio:
+        return jsonify({'error': 'Socio no encontrado'}), 404
+
+    # Obtener los datos del cuerpo de la solicitud
+    data = request.get_json()
+
+    # Actualizar los campos del socio
+    socio.nombre = data.get('nombre', socio.nombre)
+    socio.direccion = data.get('direccion', socio.direccion)
+    socio.correo = data.get('correo', socio.correo)
+    socio.telefono = data.get('telefono', socio.telefono)
+    socio.estado = data.get('estado', socio.estado)
+    socio.monto_estimado = data.get('monto_estimado', socio.monto_estimado)  # Actualizar monto_estimado
+    socio.monto_pagado = data.get('monto_pagado', socio.monto_pagado)  # Actualizar monto_pagado
+
+    # Guardar los cambios en la base de datos
+    db.session.commit()
+
+    return jsonify({'mensaje': 'Socio actualizado exitosamente'})
+
+# Ruta para actualizar el estado de un socio
+@app.route('/socios/actualizar-estado/<int:id>', methods=['PUT'])
+def actualizar_estado_socio(id):
+    socio = Socio.query.get(id)
+    if not socio:
+        return jsonify({'error': 'Socio no encontrado'}), 404
+
+    data = request.get_json()
+    nuevo_estado = data.get('estado')
+
+    # Actualizar el estado del socio
+    socio.estado = nuevo_estado
+    db.session.commit()
+
+    return jsonify({'mensaje': f'Socio con ID {id} actualizado a estado {nuevo_estado}'}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

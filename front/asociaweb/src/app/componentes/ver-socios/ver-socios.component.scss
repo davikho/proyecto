@@ -1,0 +1,44 @@
+.ver-socios-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  
+    .table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+  
+      th, td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+  
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+  
+      .btn {
+        margin-right: 5px;
+        padding: 5px 10px;
+      }
+  
+      .btn-warning {
+        background-color: #ffc107;
+      }
+  
+      .btn-success {
+        background-color: #28a745;
+      }
+  
+      .btn-danger {
+        background-color: #dc3545;
+      }
+    }
+  }
+  

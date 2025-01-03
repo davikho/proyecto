@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+// En el servicio RegistroService
 @Injectable({
   providedIn: 'root'
 })
@@ -28,5 +29,20 @@ export class RegistroService {
   // Eliminar un socio por ID
   eliminarSocio(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/eliminar/${id}`);
+  }
+
+  // Actualizar el estado de un socio
+  actualizarEstadoSocio(id: number, estado: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/actualizar-estado/${id}`, { estado });
+  }
+
+  // Actualizar los datos de un socio
+  actualizarSocio(id: number, socio: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/actualizar/${id}`, socio);
+  }
+
+  // Obtener las estadísticas de los socios
+  obtenerEstadisticas(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/estadisticas`);
   }
 }

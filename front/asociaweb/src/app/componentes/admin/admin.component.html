@@ -1,1 +1,38 @@
-<p>admin works!</p>
+<div class="d-flex">
+    <!-- Sidebar (barra lateral) -->
+    <aside class="sidebar bg-dark text-white p-4" style="width: 250px; height: 100vh;">
+      <!-- Logo -->
+      <div class="d-flex justify-content-center mb-4">
+        <img src="assets/logo.png" alt="Logo" style="max-width: 100px;">
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-3">
+          <a class="nav-link text-white" routerLink="inicio" routerLinkActive="active">
+            <i class="bi bi-house-door-fill"></i> Inicio
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a class="nav-link text-white" routerLink="crear-socio" routerLinkActive="active">
+            <i class="bi bi-person-plus-fill"></i> Crear Socios
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a class="nav-link text-white" routerLink="ver-socios" routerLinkActive="active">
+            <i class="bi bi-person-lines-fill"></i> Ver Socios
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a class="nav-link text-white" routerLink="configuraciones" routerLinkActive="active">
+            <i class="bi bi-gear-fill"></i> Configuraciones
+          </a>
+        </li>
+      </ul>
+    </aside>
+  
+    <!-- Contenido principal -->
+    <main class="flex-grow-1 p-4" style="min-height: 100vh;">
+      <!-- Aquí se renderizan los componentes de las rutas hijas del admin -->
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+  

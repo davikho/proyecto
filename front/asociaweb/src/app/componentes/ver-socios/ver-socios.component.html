@@ -1,0 +1,158 @@
+<!-- Mostrar estadísticas debajo de la tabla -->
+<div class="row">
+    <div class="col-md-3 mb-4">
+      <div class="card text-white bg-success h-100">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi bi-person-fill fs-3 me-3"></i> <!-- Icono de persona -->
+          <div>
+            <h5 class="card-title">Total Socios</h5>
+            <p class="card-text">{{ estadisticas.totalSocios }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-3 mb-4">
+      <div class="card text-white bg-primary h-100">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi bi-wallet2 fs-3 me-3"></i> <!-- Icono de billetera -->
+          <div>
+            <h5 class="card-title">Total Estimado</h5>
+            <p class="card-text">{{ estadisticas.totalEstimado | currency }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-3 mb-4">
+      <div class="card text-white bg-info h-100">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi bi-credit-card fs-3 me-3"></i> <!-- Icono de tarjeta de crédito -->
+          <div>
+            <h5 class="card-title">Total Pagado</h5>
+            <p class="card-text">{{ estadisticas.totalPagado | currency }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-3 mb-4">
+      <div class="card text-white bg-danger h-100">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi bi-arrow-up-down fs-3 me-3"></i> <!-- Icono de flechas arriba y abajo -->
+          <div>
+            <h5 class="card-title">Diferencia Total</h5>
+            <p class="card-text">{{ estadisticas.diferenciaTotal | currency }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<div class="ver-socios-container">
+    <h1>Lista de Socios</h1>
+    
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Correo Electrónico</th>
+          <th>Teléfono</th>
+          <th>Estado</th>
+          <th>Monto Estimado</th>
+          <th>Monto Pagado</th>
+          <th>Diferencia</th> <!-- Nueva columna para la diferencia -->
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let socio of socios">
+          <td>{{ socio.id }}</td>
+  
+          <!-- Campo Nombre editable -->
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="socio.nombre"
+              class="form-control"
+              (blur)="guardarCambios(socio)"
+            />
+          </td>
+  
+          <!-- Campo Dirección editable -->
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="socio.direccion"
+              class="form-control"
+              (blur)="guardarCambios(socio)"
+            />
+          </td>
+  
+          <!-- Campo Correo editable -->
+          <td>
+            <input
+              type="email"
+              [(ngModel)]="socio.correo"
+              class="form-control"
+              (blur)="guardarCambios(socio)"
+            />
+          </td>
+  
+          <!-- Campo Teléfono editable -->
+          <td>
+            <input
+              type="tel"
+              [(ngModel)]="socio.telefono"
+              class="form-control"
+              (blur)="guardarCambios(socio)"
+            />
+          </td>
+  
+          <!-- Estado de Socio -->
+          <td>
+            <span [ngClass]="{'text-success': socio.estado === 'activo', 'text-danger': socio.estado === 'inactivo'}">
+              {{ socio.estado }}
+            </span>
+          </td>
+  
+          <!-- Monto Estimado editable -->
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="socio.monto_estimado"
+              class="form-control"
+              (blur)="guardarCambios(socio)"
+            />
+          </td>
+  
+          <!-- Monto Pagado editable -->
+          <td>
+            <input
+              type="number"
+              [(ngModel)]="socio.monto_pagado"
+              class="form-control"
+              (blur)="guardarCambios(socio)"
+            />
+          </td>
+  
+          <!-- Columna de Diferencia -->
+          <td>
+            <!-- Mostrar la diferencia entre monto estimado y monto pagado -->
+            {{ socio.monto_estimado - socio.monto_pagado | number: '1.2-2' }}
+          </td>
+  
+          <!-- Botones de acciones -->
+          <td>
+            <button class="btn btn-success" (click)="actualizarEstado(socio.id, socio.estado === 'activo' ? 'inactivo' : 'activo')">
+              {{ socio.estado === 'activo' ? 'Desactivar' : 'Activar' }}
+            </button>
+            <button class="btn btn-danger" (click)="eliminarSocio(socio.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

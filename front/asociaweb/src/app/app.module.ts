@@ -10,6 +10,11 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { AdminComponent } from './componentes/admin/admin.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { CrearSocioComponent } from './componentes/crear-socio/crear-socio.component';
+import { VerSociosComponent } from './componentes/ver-socios/ver-socios.component';
+import { ConfiguracionesComponent } from './componentes/configuraciones/configuraciones.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +24,11 @@ import { AdminComponent } from './componentes/admin/admin.component';
     NavbarComponent,
     FooterComponent,
     AdminComponent,
+    LoginComponent,
+    CrearSocioComponent,
+    VerSociosComponent,
+    ConfiguracionesComponent,
+    InicioComponent,
     
   ],
   imports: [
