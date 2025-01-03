@@ -1,6 +1,3 @@
-# Creando el archivo .md con la información proporcionada, incluyendo emojis, links de descarga y detalles de la app desplegada.
-
-file_content = """
 # Aplicación de Gestión de Socios 📋
 
 ## **Bondades de la Aplicación de Gestión de Socios** ✨
